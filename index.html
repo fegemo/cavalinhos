@@ -18,9 +18,17 @@
                 allowFullscreen: true,
                 splashScreen: false,
             };
-            player.ruffle().load("cavalinhos.swf");
-            player.style.width = "100%";
-            player.style.height = "100%";
+            player.ruffle().load("cavalinhos.swf").then(() => {
+                player.style.width = "100%";
+                player.style.height = "100%";
+            });
+            document.body.ondblclick = () => {
+                if (player.fullscreen) {
+                    player.exitFullscreen();
+                } else {
+                    player.requestFullscreen();
+                }
+            };
         });
     </script>
     <style>
